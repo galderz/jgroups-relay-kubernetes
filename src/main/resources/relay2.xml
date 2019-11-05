@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    Sample configuration of multiple sites, to be used in RELAY2
+
+    ****
+    **** Note that the schema is still work-in-progress and might change between 3.2 and 3.3, as
+    **** we're trying to simplify it
+    ****
+-->
+<RelayConfiguration xmlns="urn:jgroups:relay:1.0"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="urn:jgroups:relay:1.0 relay.xsd">
+    <sites>
+        <site name="SiteA">
+            <bridges>
+                <bridge config="global-SiteA.xml" name="global"/>
+            </bridges>
+        </site>
+        <site name="SiteB">
+            <bridges>
+                <bridge config="global-SiteB.xml" name="global" />
+            </bridges>
+        </site>
+    </sites>
+</RelayConfiguration>
