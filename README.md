@@ -19,3 +19,17 @@ Two sites should join together:
 ```bash
 Received new x-site view: [SiteB, SiteA]
 ```
+
+## Docker
+
+First build the image:
+
+```bash
+make clean build prepare image
+```
+
+You can quickly boot up the image:
+
+```bash
+make docker-run
+```

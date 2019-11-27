@@ -29,5 +29,4 @@
                   config='relay2.xml'
                   max_site_masters='1000'
                   can_become_site_master='true'/>
-    <FORWARD_TO_COORD />
 </config>

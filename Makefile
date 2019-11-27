@@ -47,3 +47,9 @@ exec:
 	SITE_NAME=${SITE_NAME} mvn exec:java \
 	-Dexec.mainClass="demo.Demo" \
 	-Djava.net.preferIPv4Stack=true
+
+image:
+	mvn jib:dockerBuild
+
+docker-run:
+	docker run --interactive --tty --env SITE_NAME=${SITE_NAME} galderz/jgroups-relay-kubernetes

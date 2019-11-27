@@ -90,6 +90,10 @@ public class Demo
 
         channel.connect("RelayDemo");
 
+        while (!Thread.currentThread().isInterrupted()) {
+            Thread.sleep(1000);
+        }
+
         for (; ; )
         {
             String line = Util.readStringFromStdin(": ");
