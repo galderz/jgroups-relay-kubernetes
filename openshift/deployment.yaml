@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-jgroups
+  labels:
+    app: example-jgroups
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-jgroups
+  template:
+    metadata:
+      labels:
+        app: example-jgroups
+    spec:
+      containers:
+        - name: example-jgroups
+          image: galderz/jgroups-relay-kubernetes
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7800
+            - containerPort: 7900
+          env:
+            - name: DEMO_SITE_NAME
+              value: VALUE_SITE_NAME
+            - name: DEMO_EXTERNAL_ADDRESS
+              value: VALUE_EXTERNAL_ADDRESS
+            - name: DEMO_SITE_INITIAL_HOSTS
+              value: VALUE_SITE_INITIAL_HOSTS

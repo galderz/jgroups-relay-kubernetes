@@ -9,6 +9,7 @@ import org.jgroups.protocols.relay.RELAY2;
 import org.jgroups.protocols.relay.RouteStatusListener;
 import org.jgroups.util.Util;
 
+import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -19,10 +20,40 @@ public class Demo
 {
     public static void main(String[] args) throws Exception
     {
-        final String siteName = System.getenv("SITE_NAME");
-        System.out.println("Hello world! (" + siteName + ")");
+        try {
+            runDemo(args);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
 
-        String props = String.format("local-Site%s.xml", siteName);
+        while (!Thread.currentThread().isInterrupted()) {
+            Thread.sleep(1000);
+        }
+    }
+
+    public static void runDemo(String[] args) throws Exception
+    {
+        final String podIp = InetAddress.getLocalHost().getHostAddress();
+        System.setProperty("demo.pod.ip", podIp);
+
+        String siteName = System.getenv("DEMO_SITE_NAME");
+        System.setProperty("demo.site.name", siteName);
+
+        String siteExternalAddress = System.getenv("DEMO_EXTERNAL_ADDRESS");
+        System.setProperty("demo.site.external.address", siteExternalAddress);
+
+        String siteHosts = System.getenv("DEMO_SITE_INITIAL_HOSTS");
+        System.setProperty("demo.site.initial.hosts", siteHosts);
+
+        System.out.printf("Pod IP: %s%n", podIp);
+        System.out.printf("Site name: %s%n", siteName);
+        System.out.printf("Site external address: %s%n", siteExternalAddress);
+        System.out.printf("Site hosts: %s%n", siteHosts);
+
+//        final String siteName = System.getenv("SITE_NAME");
+//        System.out.println("Hello world! (" + siteName + ")");
+
+        String props = "demo-local.xml";
         //String name = "relay-channel";
 
         final JChannel channel = new JChannel(props);

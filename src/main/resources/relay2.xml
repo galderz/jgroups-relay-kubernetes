@@ -12,14 +12,22 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="urn:jgroups:relay:1.0 relay.xsd">
     <sites>
+        <!-- Defining one site and doing system property resolution does not seem to work -->
+        <!-- @bela should it work? -->
+
+<!--        <site name="${demo.site.name}">-->
+<!--            <bridges>-->
+<!--                <bridge config="demo-global.xml" name="global"/>-->
+<!--            </bridges>-->
+<!--        </site>-->
         <site name="SiteA">
             <bridges>
-                <bridge config="global-SiteA.xml" name="global"/>
+                <bridge config="demo-global.xml" name="global"/>
             </bridges>
         </site>
         <site name="SiteB">
             <bridges>
-                <bridge config="global-SiteB.xml" name="global" />
+                <bridge config="demo-global.xml" name="global"/>
             </bridges>
         </site>
     </sites>

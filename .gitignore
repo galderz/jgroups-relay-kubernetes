@@ -1,3 +1,9 @@
+# Maven build folder
 target
+
+# IntelliJ files
 *.iml
 .idea
+
+# OpenShift credentials
+.openshift

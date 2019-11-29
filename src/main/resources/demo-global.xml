@@ -1,13 +1,12 @@
 <config xmlns='urn:org:jgroups'
         xsi:schemaLocation='urn:org:jgroups http://www.jgroups.org/schema/jgroups-4.0.xsd'
         xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-    <TCP bind_addr='127.0.0.1' bind_port='DEMO_GLOBAL_PORT' port_range='0'/>
-         <!--
-         external_addr='DEMO_GLOBAL_ADDR_A'
+    <TCP bind_addr='${demo.pod.ip}' bind_port='7900' port_range='0'
+         external_addr='${demo.site.external.address}'
          external_port='7900'
-         -->
+         />
     <TCPPING
-            initial_hosts='127.0.0.1[DEMO_GLOBAL_A_PORT],127.0.0.1[DEMO_GLOBAL_B_PORT]'
+            initial_hosts='${demo.site.initial.hosts}'
             port_range='0'/>
     <MERGE3/>
     <FD_SOCK client_bind_port='57600' start_port='57600'/>
